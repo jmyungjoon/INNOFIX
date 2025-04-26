@@ -1,10 +1,12 @@
-/* Language span default state */
+/* style.css */
+
+/* 언어별 텍스트 기본 숨김 처리 */
 html[lang="ko"] [data-lang="en"],
 html[lang="en"] [data-lang="ko"] {
     display: none;
 }
 
-/* Language Toggle Button Style */
+/* 언어 전환 버튼 스타일 */
 .lang-button {
     background-color: var(--accent-color);
     color: white;
@@ -20,123 +22,261 @@ html[lang="en"] [data-lang="ko"] {
 }
 
 .lang-button:hover {
-    background-color: #e69500;
+    background-color: #e69500; /* 호버 시 약간 어두운 주황색 */
 }
 
-/* Adjust Header Layout */
+/* 헤더 레이아웃 조정 */
 header .container {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-/* Responsive Header Adjustments */
+/* 반응형 헤더 조정 (중간 크기 화면) */
 @media (max-width: 850px) {
      header .container {
-        position: relative;
+        position: relative; /* 버튼 절대 위치 지정을 위함 */
      }
      .lang-button {
         position: absolute;
-        top: 15px;
-        right: 15px;
+        top: 15px; /* 수직 위치 조정 */
+        right: 15px; /* 오른쪽 정렬 */
      }
      nav {
-         margin-right: 80px; /* Make space for the button */
+         margin-right: 80px; /* 버튼 공간 확보 */
      }
 }
 
+/* 반응형 헤더 조정 (작은 크기 화면) */
 @media (max-width: 768px) {
     header .container {
-        flex-direction: column;
+        flex-direction: column; /* 세로 정렬 */
         align-items: center;
-        position: static;
+        position: static; /* 절대 위치 해제 */
     }
     nav {
         margin-top: 10px;
-        margin-right: 0;
+        margin-right: 0; /* 마진 초기화 */
         width: 100%;
-        justify-content: center; /* Center nav items */
-    }
-    nav ul {
         justify-content: center;
     }
+    nav ul {
+        justify-content: center; /* 네비게이션 아이템 가운데 정렬 */
+    }
     .lang-button {
-        position: static;
-        margin-top: 10px;
+        position: static; /* 절대 위치 해제 */
+        margin-top: 10px; /* 버튼 위 여백 추가 */
         margin-left: 0;
     }
 }
 
-/* --- 기존 CSS 코드 --- */
+/* --- 전역 스타일 및 변수 --- */
 :root {
-    --primary-color: #007BFF;
-    --accent-color: #FFA500;
-    --text-color: #343A40;
-    --background-color: #FFFFFF;
-    --light-gray-bg: #F8F9FA;
-    --heading-font: 'Montserrat', sans-serif;
-    --body-font: 'Noto Sans KR', sans-serif;
+    --primary-color: #007BFF; /* 활기찬 파랑 */
+    --accent-color: #FFA500;  /* 밝은 주황 */
+    --text-color: #343A40;    /* 어두운 회색 / 검정 */
+    --background-color: #FFFFFF; /* 흰색 */
+    --light-gray-bg: #F8F9FA; /* 밝은 회색 */
+    --heading-font: 'Montserrat', sans-serif; /* 제목 폰트 */
+    --body-font: 'Noto Sans KR', sans-serif; /* 본문 폰트 */
 }
 
-* { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-body { font-family: var(--body-font); color: var(--text-color); line-height: 1.6; background-color: var(--background-color); font-weight: 400; }
-h1, h2, h3, h4, h5, h6 { font-family: var(--heading-font); color: var(--primary-color); margin-bottom: 1rem; font-weight: 700; }
+/* 기본 리셋 및 본문 스타일 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth; /* 부드러운 스크롤 */
+}
+
+body {
+    font-family: var(--body-font);
+    color: var(--text-color);
+    line-height: 1.6; /* 줄 간격 */
+    background-color: var(--background-color);
+    font-weight: 400; /* Noto Sans KR Regular */
+}
+
+/* 제목 스타일 */
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--heading-font);
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    font-weight: 700; /* Montserrat Bold */
+}
 h1 { font-size: 2.8rem; }
-h2 { font-size: 2rem; margin-top: 2rem; }
+h2 { font-size: 2rem; margin-top: 2rem; } /* 섹션 제목 위 여백 */
 h3 { font-size: 1.5rem; }
-p { margin-bottom: 1rem; }
-a { color: var(--primary-color); text-decoration: none; transition: color 0.3s ease; }
-a:hover { color: var(--accent-color); }
-ul { list-style: none; padding-left: 0; }
-img { max-width: 100%; height: auto; }
-hr { border: 0; height: 1px; background-color: #eee; margin: 2rem 0; }
-.container { width: 90%; max-width: 1100px; margin: 0 auto; padding: 0 15px; }
-.section-padding { padding: 60px 0; }
-.bg-light-gray { background-color: var(--light-gray-bg); }
 
-/* Header & Navigation */
-header { background-color: #fff; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); position: sticky; top: 0; z-index: 1000; padding: 10px 0; }
-.logo a { font-family: var(--heading-font); font-size: 1.8rem; font-weight: bold; color: var(--primary-color); text-decoration: none; }
-nav ul { display: flex; }
-nav ul li { margin-left: 25px; position: relative; }
-nav ul li a { color: var(--text-color); font-weight: 500; padding: 5px 0; position: relative; transition: color 0.3s ease; }
-nav ul li a:hover { color: var(--primary-color); }
-nav ul li a::after { content: ''; position: absolute; width: 0; height: 2px; bottom: -2px; left: 0; background-color: var(--accent-color); transition: width 0.3s ease; }
-nav ul li a:hover::after { width: 100%; }
-.dropdown-content { display: none; position: absolute; background-color: #f9f9f9; min-width: 160px; box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); z-index: 1; top: 100%; left: 0; padding: 10px 0; border-radius: 4px; }
-.dropdown-content li { margin-left: 0; }
-.dropdown-content a { color: var(--text-color); padding: 10px 15px; display: block; white-space: nowrap; font-weight: 400; }
-.dropdown-content a:hover { background-color: #ddd; color: var(--primary-color); }
-.dropdown-content a::after { display: none; }
-.dropdown:hover .dropdown-content { display: block; }
+/* 단락 스타일 */
+p {
+    margin-bottom: 1rem;
+}
 
-/* Hero Section Styling */
+/* 링크 스타일 */
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+a:hover {
+    color: var(--accent-color);
+}
+
+/* 목록 스타일 */
+ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+/* 이미지 스타일 */
+img {
+    max-width: 100%; /* 이미지 최대 너비 제한 */
+    height: auto; /* 높이 자동 조절 */
+    display: block; /* 이미지 아래 추가 공간 제거 */
+}
+
+/* 구분선 스타일 */
+hr {
+    border: 0;
+    height: 1px;
+    background-color: #eee;
+    margin: 2rem 0; /* 위아래 여백 */
+}
+
+/* 유틸리티 클래스 */
+.container {
+    width: 90%;
+    max-width: 1100px; /* 최대 너비 제한 */
+    margin: 0 auto; /* 가운데 정렬 */
+    padding: 0 15px; /* 좌우 패딩 */
+}
+.section-padding {
+    padding: 60px 0; /* 섹션 상하 패딩 */
+}
+.bg-light-gray {
+    background-color: var(--light-gray-bg); /* 밝은 회색 배경 */
+}
+
+/* 헤더 및 네비게이션 */
+header {
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
+    position: sticky; /* 상단 고정 */
+    top: 0;
+    z-index: 1000; /* 다른 요소 위에 표시 */
+    padding: 10px 0; /* 상하 패딩 */
+}
+
+/* 로고 스타일 */
+.logo {
+    display: flex;
+    align-items: center;
+}
+.logo a {
+    display: inline-block;
+}
+.logo img {
+    max-height: 40px; /* 로고 최대 높이 */
+    width: auto;
+    vertical-align: middle; /* 수직 가운데 정렬 */
+}
+
+/* 네비게이션 목록 */
+nav ul {
+    display: flex;
+}
+nav ul li {
+    margin-left: 25px; /* 항목 간 왼쪽 여백 */
+    position: relative; /* 드롭다운 기준점 */
+}
+nav ul li a {
+    color: var(--text-color);
+    font-weight: 500; /* Noto Sans KR Medium */
+    padding: 5px 0;
+    position: relative;
+    transition: color 0.3s ease;
+}
+nav ul li a:hover {
+    color: var(--primary-color);
+}
+/* 네비게이션 호버 밑줄 효과 */
+nav ul li a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -2px;
+    left: 0;
+    background-color: var(--accent-color);
+    transition: width 0.3s ease;
+}
+nav ul li a:hover::after {
+    width: 100%;
+}
+
+/* 드롭다운 메뉴 */
+.dropdown-content {
+    display: none; /* 기본 숨김 */
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    top: 100%; /* 부모 요소 아래 위치 */
+    left: 0;
+    padding: 10px 0;
+    border-radius: 4px;
+}
+.dropdown-content li {
+    margin-left: 0; /* 마진 초기화 */
+}
+.dropdown-content a {
+    color: var(--text-color);
+    padding: 10px 15px;
+    display: block;
+    white-space: nowrap; /* 줄바꿈 방지 */
+    font-weight: 400; /* Regular */
+}
+.dropdown-content a:hover {
+    background-color: #ddd;
+    color: var(--primary-color);
+}
+.dropdown-content a::after {
+    display: none; /* 드롭다운 내 밑줄 제거 */
+}
+.dropdown:hover .dropdown-content {
+    display: block; /* 호버 시 드롭다운 표시 */
+}
+
+/* Hero 섹션 스타일 */
 .hero {
-    /* Remove background-color, color is handled by overlay/video */
     text-align: center;
-    min-height: 70vh; /* Adjust height as needed */
+    min-height: 70vh; /* 최소 높이 */
     display: flex;
     align-items: center;
     justify-content: center;
-    position: relative; /* Needed for positioning video and overlay */
-    overflow: hidden; /* Hide parts of video overflowing */
-    padding: 80px 0; /* Keep padding for content spacing */
+    position: relative;
+    overflow: hidden; /* 비디오 넘침 방지 */
+    padding: 80px 0;
 }
 
-/* Style for the background video */
+/* 배경 비디오 스타일 */
 .hero-video {
     position: absolute;
     top: 50%;
     left: 50%;
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Cover the entire area, cropping if necessary */
-    transform: translate(-50%, -50%);
-    z-index: 1; /* Place video behind content */
+    object-fit: cover; /* 영역 채우기 (잘릴 수 있음) */
+    transform: translate(-50%, -50%); /* 정중앙 배치 */
+    z-index: 1; /* 콘텐츠 뒤에 배치 */
 }
 
-/* Optional: Add a dark overlay for better text readability */
+/* 비디오 위 어두운 오버레이 (텍스트 가독성 향상) */
 .hero::after {
     content: '';
     position: absolute;
@@ -144,77 +284,241 @@ nav ul li a:hover::after { width: 100%; }
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Adjust opacity as needed */
-    z-index: 1; /* Overlay above video, below content */
+    background-color: rgba(0, 0, 0, 0.5); /* 반투명 검정 */
+    z-index: 1; /* 비디오 위, 콘텐츠 아래 */
 }
 
-/* Ensure hero content is above the video and overlay */
+/* Hero 섹션 콘텐츠 스타일 */
 .hero-content {
     position: relative;
-    z-index: 2;
-    color: white; /* Set text color to white for contrast */
+    z-index: 2; /* 오버레이 위에 표시 */
+    color: white; /* 텍스트 흰색 */
 }
-
 .hero h1 {
-    color: white; /* Override default heading color */
+    color: white; /* 제목 흰색 */
     font-size: 3rem;
     margin-bottom: 0.5rem;
 }
-
 .hero p {
     font-size: 1.2rem;
     margin-bottom: 2rem;
-    color: white; /* Ensure paragraph text is also white */
+    color: white; /* 단락 흰색 */
 }
 
-/* Call-to-Action Button */
-.cta-button { display: inline-block; background-color: var(--accent-color); color: white; padding: 12px 25px; border-radius: 25px; text-decoration: none; font-weight: bold; transition: background-color 0.3s ease, transform 0.2s ease; border: none; cursor: pointer; font-size: 1rem; }
-.cta-button:hover { background-color: #e69500; color: white; transform: translateY(-2px); }
+/* CTA 버튼 스타일 */
+.cta-button {
+    display: inline-block;
+    background-color: var(--accent-color);
+    color: white;
+    padding: 12px 25px;
+    border-radius: 25px; /* 둥근 모서리 */
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+}
+.cta-button:hover {
+    background-color: #e69500; /* 호버 시 어두운 주황색 */
+    color: white;
+    transform: translateY(-2px); /* 약간 위로 이동하는 효과 */
+}
 
-/* About Us Section */
-.history-timeline { position: relative; padding: 20px 0; }
-.history-item { margin-bottom: 20px; padding: 15px; border-left: 3px solid var(--primary-color); background-color: var(--light-gray-bg); border-radius: 4px; }
-.history-item h3 { margin-top: 0; color: var(--text-color); }
-.history-item p { margin-bottom: 0.5rem; font-size: 0.9rem; }
-.studio-gallery-placeholder { background-color: #eee; min-height: 200px; display: flex; align-items: center; justify-content: center; color: #aaa; border-radius: 4px; }
+/* About Us 섹션 */
+.history-timeline {
+    position: relative;
+    padding: 20px 0;
+}
+.history-item {
+    margin-bottom: 20px;
+    padding: 15px;
+    border-left: 3px solid var(--primary-color); /* 타임라인 선 */
+    background-color: var(--light-gray-bg);
+    border-radius: 4px;
+}
+.history-item h3 {
+     margin-top: 0;
+     color: var(--text-color); /* 제목 색상 조정 */
+}
+.history-item p {
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+}
 
-/* Portfolio Section */
-.filter-buttons { margin-bottom: 30px; text-align: center; }
-.filter-btn { background-color: #eee; border: none; padding: 8px 15px; margin: 0 5px; cursor: pointer; border-radius: 20px; transition: background-color 0.3s ease, color 0.3s ease; }
-.filter-btn:hover, .filter-btn.active { background-color: var(--primary-color); color: white; }
-.portfolio-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
-.portfolio-item { background-color: #eee; min-height: 200px; display: flex; align-items: center; justify-content: center; color: #aaa; border-radius: 8px; text-align: center; padding: 10px; }
+/* 스튜디오 슬라이더 스타일 */
+.slider-container {
+    position: relative;
+    width: 100%;
+    max-width: 800px; /* 슬라이더 최대 너비 */
+    margin: 2rem auto 0; /* 가운데 정렬 및 상단 여백 */
+    overflow: hidden; /* 컨테이너 밖 슬라이드 숨김 */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
 
-/* Services Section */
-#services ul { list-style: disc; padding-left: 20px; }
-#services li { margin-bottom: 10px; }
+.slides {
+    display: flex; /* 슬라이드 가로 정렬 */
+    transition: transform 0.5s ease-in-out; /* 부드러운 전환 효과 */
+    width: 100%;
+}
 
-/* Contact Section */
-.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
-.contact-info p { margin-bottom: 0.8rem; }
-.map-placeholder { background-color: #eee; min-height: 250px; margin-top: 1.5rem; display: flex; align-items: center; justify-content: center; color: #aaa; border-radius: 4px; }
-.contact-form label { display: block; margin-bottom: 5px; font-weight: 500; }
-.contact-form input[type="text"], .contact-form input[type="email"], .contact-form textarea { width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 4px; font-family: var(--body-font); }
-.contact-form textarea { resize: vertical; }
-.contact-form button[type="submit"] { /* Uses .cta-button style */ }
+.slide {
+    min-width: 100%; /* 각 슬라이드가 컨테이너 너비 차지 */
+    box-sizing: border-box;
+}
 
-/* Footer */
-footer { background-color: var(--text-color); color: #ccc; text-align: center; padding: 20px 0; margin-top: 40px; }
-footer p { margin-bottom: 0; font-size: 0.9rem; }
+.slide img {
+    width: 100%;
+    height: auto;
+    max-height: 500px; /* 이미지 최대 높이 제한 */
+    object-fit: cover; /* 이미지 비율 유지하며 영역 채우기 */
+    display: block;
+}
 
-/* Basic Responsive Adjustments */
+/* 슬라이더 네비게이션 버튼 */
+.prev-btn,
+.next-btn {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%); /* 수직 가운데 정렬 */
+    width: auto;
+    padding: 16px;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    background-color: rgba(0, 0, 0, 0.5); /* 반투명 배경 */
+    border: none;
+    border-radius: 0 3px 3px 0;
+    user-select: none; /* 텍스트 선택 방지 */
+    transition: background-color 0.3s ease;
+}
+.next-btn {
+    right: 0;
+    border-radius: 3px 0 0 3px; /* 반대쪽 모서리 둥글게 */
+}
+.prev-btn:hover,
+.next-btn:hover {
+    background-color: rgba(0, 0, 0, 0.8); /* 호버 시 어두운 배경 */
+}
+
+/* 포트폴리오 섹션 */
+.filter-buttons {
+    margin-bottom: 30px;
+    text-align: center;
+}
+.filter-btn {
+    background-color: #eee;
+    border: none;
+    padding: 8px 15px;
+    margin: 0 5px;
+    cursor: pointer;
+    border-radius: 20px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+.filter-btn:hover,
+.filter-btn.active { /* 활성화된 버튼 스타일 */
+    background-color: var(--primary-color);
+    color: white;
+}
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* 반응형 그리드 */
+    gap: 20px; /* 그리드 간격 */
+}
+.portfolio-item { /* 플레이스홀더 스타일 */
+    background-color: #eee;
+    min-height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #aaa;
+    border-radius: 8px;
+    text-align: center;
+    padding: 10px;
+}
+
+/* 서비스 섹션 */
+#services ul {
+    list-style: disc; /* 기본 불릿 */
+    padding-left: 20px; /* 들여쓰기 */
+}
+#services li {
+    margin-bottom: 10px; /* 항목 간 여백 */
+}
+
+/* 연락처 섹션 */
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* 2열 그리드 */
+    gap: 40px; /* 그리드 간격 */
+}
+.contact-info p {
+    margin-bottom: 0.8rem;
+}
+.map-placeholder { /* 지도 플레이스홀더 */
+    background-color: #eee;
+    min-height: 250px;
+    margin-top: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #aaa;
+    border-radius: 4px;
+}
+
+/* 문의 양식 스타일 */
+.contact-form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-family: var(--body-font); /* 폰트 상속 */
+}
+.contact-form textarea {
+    resize: vertical; /* 수직 크기 조절 허용 */
+}
+.contact-form button[type="submit"] {
+    /* CTA 버튼 스타일 사용 */
+}
+
+/* 푸터 스타일 */
+footer {
+    background-color: var(--text-color); /* 어두운 배경 */
+    color: #ccc; /* 밝은 텍스트 색상 */
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 40px; /* 위 여백 */
+}
+footer p {
+    margin-bottom: 0;
+    font-size: 0.9rem;
+}
+
+/* 기본 반응형 조정 */
 @media (max-width: 768px) {
     h1 { font-size: 2.2rem; }
     h2 { font-size: 1.8rem; }
-    .hero { padding: 60px 0; min-height: 50vh; } /* Adjust hero padding/height */
+    .hero { padding: 60px 0; min-height: 50vh; } /* Hero 섹션 높이/패딩 조정 */
     .hero h1 { font-size: 2.5rem; }
     .hero p { font-size: 1rem; }
-    .contact-grid { grid-template-columns: 1fr; gap: 30px; }
+    .contact-grid { grid-template-columns: 1fr; gap: 30px; } /* 연락처 섹션 1열로 변경 */
     .map-placeholder { min-height: 200px; }
+    .prev-btn, .next-btn { font-size: 16px; padding: 12px; } /* 슬라이더 버튼 크기 조정 */
 }
 
 @media (max-width: 480px) {
-    .portfolio-grid { grid-template-columns: 1fr; }
-    nav ul li { margin: 5px; }
-    .hero h1 { font-size: 2rem; } /* Further adjust hero text */
+    .portfolio-grid { grid-template-columns: 1fr; } /* 포트폴리오 1열로 변경 */
+    nav ul li { margin: 5px; } /* 네비게이션 간격 조정 */
+    .hero h1 { font-size: 2rem; } /* Hero 제목 크기 조정 */
+    .prev-btn, .next-btn { font-size: 14px; padding: 10px; } /* 슬라이더 버튼 크기 추가 조정 */
 }
