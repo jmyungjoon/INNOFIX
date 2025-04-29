@@ -62,6 +62,7 @@ header .container {
     }
     nav ul {
         justify-content: center; /* 네비게이션 아이템 가운데 정렬 */
+        flex-wrap: wrap; /* 작은 화면에서 줄바꿈 허용 */
     }
     .lang-button {
         position: static; /* 절대 위치 해제 */
@@ -403,6 +404,22 @@ nav ul li a:hover::after {
     background-color: rgba(0, 0, 0, 0.8); /* 호버 시 어두운 배경 */
 }
 
+/* 프로젝트 섹션 (신규 추가) */
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* 반응형 그리드 */
+    gap: 20px; /* 그리드 간격 */
+    margin-top: 1.5rem; /* 제목 아래 여백 */
+}
+.project-item { /* 플레이스홀더 스타일 */
+    background-color: #fff; /* 배경색 변경 */
+    padding: 15px;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
 /* 포트폴리오 섹션 */
 .filter-buttons {
     margin-bottom: 30px;
@@ -514,11 +531,104 @@ footer p {
     .contact-grid { grid-template-columns: 1fr; gap: 30px; } /* 연락처 섹션 1열로 변경 */
     .map-placeholder { min-height: 200px; }
     .prev-btn, .next-btn { font-size: 16px; padding: 12px; } /* 슬라이더 버튼 크기 조정 */
+    .project-grid, .portfolio-grid { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); } /* 그리드 최소 너비 조정 */
 }
 
 @media (max-width: 480px) {
-    .portfolio-grid { grid-template-columns: 1fr; } /* 포트폴리오 1열로 변경 */
+    .portfolio-grid, .project-grid { grid-template-columns: 1fr; } /* 포트폴리오/프로젝트 1열로 변경 */
     nav ul li { margin: 5px; } /* 네비게이션 간격 조정 */
     .hero h1 { font-size: 2rem; } /* Hero 제목 크기 조정 */
     .prev-btn, .next-btn { font-size: 14px; padding: 10px; } /* 슬라이더 버튼 크기 추가 조정 */
+    nav ul { margin-left: 0; } /* 네비게이션 왼쪽 마진 제거 */
+    nav ul li { margin-left: 10px; margin-right: 10px; } /* 네비게이션 항목 좌우 여백 */
+}
+
+/* Bandi Gallery 섹션 */
+.bandi-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center; /* 이미지들을 가운데 정렬 */
+}
+
+.bandi-gallery img {
+    width: 200px;
+    height: auto;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.sensitive-cat-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center; /* 이미지들을 가운데 정렬 */
+    margin-bottom: 20px; /* 갤러리와 동영상 사이 여백 */
+}
+
+.sensitive-cat-gallery img {
+    width: 200px;
+    height: auto;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.sensitive-cat-video {
+    display: flex;
+    justify-content: center; /* 동영상을 가운데 정렬 */
+}
+
+.sensitive-cat-video video {
+    max-width: 100%;
+    height: auto;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Waddle friends 갤러리 */
+.waddle-friends-gallery,
+.yummy-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center; /* 이미지들을 가운데 정렬 */
+    margin-bottom: 20px; /* 갤러리와 동영상 사이 여백 */
+}
+
+.waddle-friends-gallery img,
+.yummy-gallery img {
+    width: 200px;
+    height: auto;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Waddle friends 및 Yummy 동영상 */
+.waddle-friends-video,
+.yummy-video {
+    display: flex;
+    justify-content: center; /* 동영상을 가운데 정렬 */
+}
+
+.waddle-friends-video video,
+.yummy-video video {
+    max-width: 100%;
+    height: auto;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.portfolio-image {
+    width: 100%;
+    height: auto;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }

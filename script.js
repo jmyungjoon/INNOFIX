@@ -1,7 +1,9 @@
 // script.js
+// 이번 요청에서는 JavaScript 코드 변경이 필요하지 않습니다.
+// 기존 언어 전환 및 슬라이더 기능은 그대로 유지됩니다.
 
 // DOM 콘텐츠 로드가 완료되면 스크립트 실행
-document.addEventListener('DOMContentLoaded', () => {
+(() => {
 
     // --- 언어 전환 기능 ---
     const langToggleButton = document.getElementById('lang-toggle'); // 언어 전환 버튼 요소 가져오기
@@ -121,4 +123,103 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     } // End of if (sliderContainer) check
 
-}); // End of DOMContentLoaded event listener
+    const portfolioGrid = document.getElementById("portfolio-grid");
+    const filterButtons = document.querySelectorAll(".filter-btn");
+
+    // 이미지 경로 설정
+    const images = {
+        all: [
+            ...getImagesFromFolder("works/2D Animation [Oem]"),
+            ...getImagesFromFolder("works/Cutout Animation [Oem]")
+        ],
+        D: getImagesFromFolder("works/2D Animation [Oem]"), 
+        cutout: getImagesFromFolder("works/Cutout Animation [Oem]")
+    };
+
+    // 초기 로드: 전체 이미지 표시
+    displayImages(images.all);
+
+    // 필터 버튼 클릭 이벤트
+    filterButtons.forEach(button => {
+        button.addEventListener("click", () => {
+            const filter = button.getAttribute("data-filter");
+
+            // 버튼 활성화 상태 업데이트
+            filterButtons.forEach(btn => btn.classList.remove("active"));
+            button.classList.add("active");
+
+            // 필터에 따라 이미지 표시
+            displayImages(images[filter]);
+        });
+    });
+
+    // 이미지 표시 함수
+    function displayImages(imagePaths) {
+        portfolioGrid.innerHTML = ""; // 기존 이미지 제거
+        imagePaths.forEach(path => {
+            const img = document.createElement("img");
+            img.src = path;
+            img.alt = "Portfolio Image";
+            img.classList.add("portfolio-image");
+            portfolioGrid.appendChild(img);
+        });
+    }
+
+    function getImagesFromFolder(folder) {
+        if (folder === "works/2D Animation [Oem]") {
+            return [
+                "works/2D Animation [Oem]/2009 Changcheon Route (蒼天航路).jpg",
+                "works/2D Animation [Oem]/2010 Stitch.jpg",
+                "works/2D Animation [Oem]/2012 Justice League.jpg",
+                "works/2D Animation [Oem]/2013 Ben10.jpg",
+                "works/2D Animation [Oem]/2015 Beast Saga (ビーストサーガ).jpg",
+                "works/2D Animation [Oem]/2017 Castlevania.jpg",
+                "works/2D Animation [Oem]/2019 Avengers.jpg",
+                "works/2D Animation [Oem]/2020 The Haunted House.jpg",
+                "works/2D Animation [Oem]/2023 Scavengers Reign.jpg",
+                "works/2D Animation [Oem]/2024 Himitsu no AiPri (ひみつのアイプリ).jpg",
+                "works/2D Animation [Oem]/2009 Dungeon & Fighter (ダンジョン＆ファイター).jpg",
+                "works/2D Animation [Oem]/2010 Zevo.jpg",
+                "works/2D Animation [Oem]/2012 Kaijudo.jpg",
+                "works/2D Animation [Oem]/2013 Nagi no Asukara (凪のあすから).jpg",
+                "works/2D Animation [Oem]/2015 Black Dynamite.jpg",
+                "works/2D Animation [Oem]/2018 Free para (プリパラ).jpg",
+                "works/2D Animation [Oem]/2019 Sparkling Free☆ Channel (キラッとプリ☆チャン).jpg",
+                "works/2D Animation [Oem]/2021 Ark.jpg",
+                "works/2D Animation [Oem]/2023 Spider Man.jpg",
+                "works/2D Animation [Oem]/2024 Invincible.jpg",
+                "works/2D Animation [Oem]/2009 Little Superhero.jpg",
+                "works/2D Animation [Oem]/2011 Leafie, A Hen into the Wild.jpg",
+                "works/2D Animation [Oem]/2012 Papa no Iukoto wo Kikinasai! (イウコトウキキナサイ！).jpg",
+                "works/2D Animation [Oem]/2013 Turbo.jpg",
+                "works/2D Animation [Oem]/2015 Mahou Shoujo Tokushusen Asuka (魔法少女特殊戦あすか).jpg",
+                "works/2D Animation [Oem]/2018 Nobunaga-sensei no Osanazuma (ノブナガ先生の幼な妻).jpg",
+                "works/2D Animation [Oem]/2019 Underdog.jpg",
+                "works/2D Animation [Oem]/2023 Family Guy.jpg",
+                "works/2D Animation [Oem]/2023 X-men.jpg",
+                "works/2D Animation [Oem]/2024 Superman.jpg",
+                "works/2D Animation [Oem]/2010 Heroman (ヒーローマン).jpg",
+                "works/2D Animation [Oem]/2012 Detective Conan (名探偵コナン).jpg",
+                "works/2D Animation [Oem]/2012 Wizard Boy Mutterl.jpg",
+                "works/2D Animation [Oem]/2014 Yoo Hee Wang (遊 戯 王).jpg",
+                "works/2D Animation [Oem]/2015 Plastic Memories (プラスティック・メモリーズ).jpg",
+                "works/2D Animation [Oem]/2018 Scooby Doo.jpg",
+                "works/2D Animation [Oem]/2020 Hulk.jpg",
+                "works/2D Animation [Oem]/2023 Harley Quinn.jpg",
+                "works/2D Animation [Oem]/2024 Betman.jpg"
+            ];
+        } else if (folder === "works/Cutout Animation [Oem]") {
+            return [
+                "works/Cutout Animation [Oem]/001 Larva.jpg",
+                "works/Cutout Animation [Oem]/002 A Kind of Magic.jpg",
+                "works/Cutout Animation [Oem]/003 Hero.jpg",
+                "works/Cutout Animation [Oem]/005 Ninja Hottori County (忍者ハットリくん).jpg"
+            ];
+        }
+        return [];
+    }
+
+})(); // End of DOMContentLoaded event listener
+
+
+
