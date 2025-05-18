@@ -9,14 +9,19 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
     <header>
         <div class="container">
             <div class="logo">
                 <a href="#home">
                     <img src="home/innofix Logo.jpg" alt="Innofix 로고">
-                    </a>
+                </a>
             </div>
+            <!-- Hamburger button for mobile -->
+            <button class="hamburger" id="hamburger-menu" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
             <nav>
                 <ul>
                     <li><a href="#home"><span data-lang="ko">홈</span><span data-lang="en">Home</span></a></li>
@@ -38,9 +43,10 @@
                     <li><a href="#portfolio"><span data-lang="ko">포트폴리오</span><span data-lang="en">Portfolio</span></a></li>
                     <li><a href="#services"><span data-lang="ko">서비스</span><span data-lang="en">Services</span></a></li>
                     <li><a href="#contact"><span data-lang="ko">연락처</span><span data-lang="en">Contact</span></a></li>
+                    <!-- Move lang-button here -->
+                    <li class="lang-menu-item"><button id="lang-toggle" class="lang-button">English</button></li>
                 </ul>
             </nav>
-            <button id="lang-toggle" class="lang-button">English</button>
         </div>
     </header>
 
@@ -272,11 +278,11 @@
                             <span data-lang="en">Get in Touch</span>
                         </h3>
                          <p><strong><span data-lang="ko">주소:</span><span data-lang="en">Address:</span></strong><br>
-                           <span data-lang="ko">경기도 부천시 원미구 길주로 1</span>
-                           <span data-lang="en">Gilju-ro 1, Wonmi-gu, Bucheon-si, Gyeonggi-do,</span><br>
-                           <span data-lang="ko">한국만화영상진흥원 402호 이노픽스</span>
+                           <span data-lang="ko">대한민국 경기도 부천시 원미구 길주로 1</span>
                            <span data-lang="en">Korea Manhwa Contents Agency, 402Ho, Innofix,</span><br>
-                           <span data-lang="ko">대한민국</span>
+                           <span data-lang="ko">한국만화영상진흥원 402호 이노픽스</span>
+                           <span data-lang="en">Gilju-ro 1, Wonmi-gu, Bucheon-si, Gyeonggi-do,</span><br>
+                           <span data-lang="ko"></span>
                            <span data-lang="en">Republic of Korea</span></p>
                         <p><strong><span data-lang="ko">이메일:</span><span data-lang="en">Email:</span></strong> <a href="mailto:innofix@nate.com">innofix@nate.com</a> </p>
                         <p><strong><span data-lang="ko">사무실:</span><span data-lang="en">Office:</span></strong> 070-4369-8321 </p>
@@ -326,6 +332,12 @@
     </footer>
 
     <script src="script.js"></script>
+
+    <!-- Add just before </body> in index.html -->
+    <a href="#home" class="home-float-btn" aria-label="Home">
+        <!-- You can use an icon font, SVG, or just a house emoji -->
+        🏠
+    </a>
 
 </body>
 </html>

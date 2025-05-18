@@ -632,3 +632,524 @@ footer p {
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
+
+/* ...existing code... */
+
+/* Hamburger styles */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 1001;
+}
+.hamburger span {
+    display: block;
+    height: 4px;
+    margin: 5px 0;
+    background: #333;
+    border-radius: 2px;
+    transition: 0.3s;
+}
+
+/* Responsive nav */
+@media (max-width: 768px) {
+    nav {
+        position: fixed;
+        top: 0;
+        right: -100vw;
+        width: 70vw;
+        height: 100vh;
+        background: #fff;
+        box-shadow: -2px 0 8px rgba(0,0,0,0.1);
+        transition: right 0.3s;
+        z-index: 1000;
+        padding-top: 60px;
+    }
+    nav.open {
+        right: 0;
+    }
+    nav ul {
+        flex-direction: column;
+        gap: 0;
+    }
+    nav ul li {
+        margin: 20px 0;
+        text-align: left;
+    }
+    .hamburger {
+        display: flex;
+    }
+    .lang-button {
+        width: 100%;
+        margin: 20px 0 0 0;
+    }
+    .lang-menu-item {
+        display: block;
+    }
+    .container {
+        flex-wrap: wrap;
+    }
+}
+
+/* Hide hamburger on desktop */
+@media (min-width: 769px) {
+    .hamburger {
+        display: none;
+    }
+    nav {
+        position: static;
+        width: auto;
+        height: auto;
+        background: none;
+        box-shadow: none;
+        padding-top: 0;
+        right: 0;
+    }
+    nav.open {
+        right: 0;
+    }
+    .lang-menu-item {
+        display: inline-block;
+    }
+}
+
+/* ...existing code... */
+
+/* Header container flex layout */
+header .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+}
+
+/* Hamburger styles */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 44px;
+    height: 44px;
+    background: #f5f5f5;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    cursor: pointer;
+    z-index: 1001;
+    margin-left: auto;
+}
+.hamburger span {
+    display: block;
+    width: 24px;
+    height: 3px;
+    margin: 4px 0;
+    background: #333;
+    border-radius: 2px;
+    transition: 0.3s;
+}
+
+/* Responsive nav */
+@media (max-width: 768px) {
+    nav {
+        position: fixed;
+        top: 0;
+        right: -100vw;
+        width: 70vw;
+        height: 100vh;
+        background: #fff;
+        box-shadow: -2px 0 8px rgba(0,0,0,0.1);
+        transition: right 0.3s;
+        z-index: 1000;
+        padding-top: 60px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end; /* Right align menu items */
+    }
+    nav.open {
+        right: 0;
+    }
+    nav ul {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end; /* Right align menu items */
+        width: 100%;
+        gap: 0;
+        padding-right: 24px;
+    }
+    nav ul li {
+        margin: 20px 0;
+        text-align: right;
+        width: 100%;
+    }
+    .hamburger {
+        display: flex;
+    }
+    .lang-button {
+        width: 100%;
+        margin: 20px 0 0 0;
+    }
+    .lang-menu-item {
+        display: block;
+    }
+    .container {
+        flex-wrap: wrap;
+    }
+}
+
+/* Hide hamburger on desktop */
+@media (min-width: 769px) {
+    .hamburger {
+        display: none;
+    }
+    nav {
+        position: static;
+        width: auto;
+        height: auto;
+        background: none;
+        box-shadow: none;
+        padding-top: 0;
+        right: 0;
+        display: block;
+    }
+    nav.open {
+        right: 0;
+    }
+    nav ul {
+        flex-direction: row;
+        align-items: center;
+        padding-right: 0;
+    }
+    nav ul li {
+        margin: 0 12px;
+        text-align: left;
+        width: auto;
+    }
+    .lang-menu-item {
+        display: inline-block;
+    }
+}
+
+/* ...existing code... */
+/* --- HEADER FLEX ALIGNMENT FIX --- */
+header .container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    height: 64px; /* Fixed height for header */
+    padding: 0 20px;
+}
+
+/* Logo always vertically centered */
+.logo {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+.logo img {
+    height: 44px; /* Adjust as needed */
+    width: auto;
+    display: block;
+}
+
+/* Hamburger button always at right, same line as logo */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 44px;
+    height: 44px;
+    background: #f5f5f5;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    cursor: pointer;
+    z-index: 1001;
+    margin-left: 16px;
+}
+
+/* Show hamburger on mobile, keep it right of logo */
+@media (max-width: 900px) {
+    header .container {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        height: 56px;
+        padding: 0 12px;
+    }
+    nav {
+        margin-left: auto;
+    }
+    .hamburger {
+        display: flex;
+    }
+    nav {
+        position: fixed;
+        top: 0;
+        right: -100vw;
+        width: 70vw;
+        height: 100vh;
+        background: #fff;
+        box-shadow: -2px 0 8px rgba(0,0,0,0.1);
+        transition: right 0.3s;
+        z-index: 1000;
+        padding-top: 60px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+    }
+    nav.open {
+        right: 0;
+    }
+    nav ul {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        width: 100%;
+        gap: 0;
+        padding-right: 24px;
+    }
+    nav ul li {
+        margin: 20px 0;
+        text-align: right;
+        width: 100%;
+    }
+    .lang-button {
+        width: 100%;
+        margin: 20px 0 0 0;
+    }
+    .lang-menu-item {
+        display: block;
+    }
+}
+
+/* Desktop: nav inline, hamburger hidden */
+@media (min-width: 901px) {
+    .hamburger {
+        display: none !important;
+    }
+    nav {
+        position: static;
+        width: auto;
+        height: auto;
+        background: none;
+        box-shadow: none;
+        padding-top: 0;
+        right: 0;
+        display: block;
+        margin-left: 32px;
+    }
+    nav ul {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        padding-right: 0;
+    }
+    nav ul li {
+        margin: 0 12px;
+        text-align: left;
+        width: auto;
+    }
+    .lang-menu-item {
+        display: inline-block;
+    }
+}
+
+/* Remove conflicting flex-direction: column from previous code */
+@media (max-width: 768px) {
+    header .container {
+        flex-direction: row !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        height: 56px;
+        padding: 0 8px;
+    }
+}
+
+/* ...existing code... */
+/* --- HEADER FLEX ALIGNMENT FIX --- */
+header .container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    height: 64px;
+    padding: 0 20px;
+}
+
+/* Logo always vertically centered */
+.logo {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+.logo img {
+    height: 44px;
+    width: auto;
+    display: block;
+}
+
+/* Hamburger button always at right, same line as logo */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 44px;
+    height: 44px;
+    background: #f5f5f5;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    cursor: pointer;
+    z-index: 1001;
+    margin-left: 16px;
+}
+
+/* --- MOBILE: Center logo, hamburger right --- */
+@media (max-width: 900px) {
+    header .container {
+        display: grid;
+        grid-template-columns: 1fr auto 1fr;
+        align-items: center;
+        height: 56px;
+        padding: 0 12px;
+        position: relative;
+    }
+    .logo {
+        grid-column: 2;
+        justify-content: center;
+    }
+    .hamburger {
+        display: flex;
+        grid-column: 3;
+        justify-self: end;
+    }
+    nav {
+        margin-left: 0;
+        position: fixed;
+        top: 0;
+        right: -100vw;
+        width: 70vw;
+        height: 100vh;
+        background: #fff;
+        box-shadow: -2px 0 8px rgba(0,0,0,0.1);
+        transition: right 0.3s;
+        z-index: 1000;
+        padding-top: 60px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+    }
+    nav.open {
+        right: 0;
+    }
+    nav ul {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        width: 100%;
+        gap: 0;
+        padding-right: 24px;
+    }
+    nav ul li {
+        margin: 20px 0;
+        text-align: right;
+        width: 100%;
+    }
+    .lang-button {
+        width: 100%;
+        margin: 20px 0 0 0;
+    }
+    .lang-menu-item {
+        display: block;
+    }
+}
+
+/* Desktop: nav inline, hamburger hidden */
+@media (min-width: 901px) {
+    header .container {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        height: 64px;
+        padding: 0 20px;
+    }
+    .logo {
+        justify-content: flex-start;
+    }
+    .hamburger {
+        display: none !important;
+    }
+    nav {
+        position: static;
+        width: auto;
+        height: auto;
+        background: none;
+        box-shadow: none;
+        padding-top: 0;
+        right: 0;
+        display: block;
+        margin-left: 32px;
+    }
+    nav ul {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        padding-right: 0;
+    }
+    nav ul li {
+        margin: 0 12px;
+        text-align: left;
+        width: auto;
+    }
+    .lang-menu-item {
+        display: inline-block;
+    }
+}
+
+/* ...existing code... */
+/* --- Always-visible Home Button --- */
+.home-float-btn {
+    position: fixed;
+    right: 24px;
+    bottom: 24px;
+    z-index: 2000;
+    background: var(--primary-color, #007BFF);
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 56px;
+    height: 56px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    cursor: pointer;
+    transition: background 0.2s, box-shadow 0.2s;
+}
+.home-float-btn:hover {
+    background: var(--accent-color, #FFA500);
+    box-shadow: 0 6px 24px rgba(0,0,0,0.22);
+}
+@media (max-width: 600px) {
+    .home-float-btn {
+        width: 44px;
+        height: 44px;
+        font-size: 1.4rem;
+        right: 12px;
+        bottom: 12px;
+    }
+}
+/* ...existing code... */

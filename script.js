@@ -219,6 +219,27 @@
         return [];
     }
 
+    // ...existing code...
+// Hamburger menu toggle
+    document.addEventListener('DOMContentLoaded', function () {
+        const hamburger = document.getElementById('hamburger-menu');
+        const nav = document.querySelector('nav');
+        hamburger.addEventListener('click', function () {
+            nav.classList.toggle('open');
+        });
+
+        // Optional: close menu when clicking outside or on a link
+        document.addEventListener('click', function (e) {
+            if (!nav.contains(e.target) && !hamburger.contains(e.target)) {
+                nav.classList.remove('open');
+            }
+        });
+        nav.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => nav.classList.remove('open'));
+        });
+    });
+// ...existing code...
+
 })(); // End of DOMContentLoaded event listener
 
 
