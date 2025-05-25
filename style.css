@@ -8,8 +8,8 @@ html[lang="en"] [data-lang="ko"] {
 
 /* 언어 전환 버튼 스타일 */
 .lang-button {
-    background-color: var(--accent-color);
-    color: white;
+    background-color: var(--accent-primary);
+    color: var(--bg-main);
     border: none;
     padding: 8px 15px;
     border-radius: 20px;
@@ -22,7 +22,8 @@ html[lang="en"] [data-lang="ko"] {
 }
 
 .lang-button:hover {
-    background-color: #e69500; /* 호버 시 약간 어두운 주황색 */
+    background-color: #FFC14D;
+    color: var(--bg-main);
 }
 
 /* 헤더 레이아웃 조정 */
@@ -73,11 +74,25 @@ header .container {
 
 /* --- 전역 스타일 및 변수 --- */
 :root {
-    --primary-color: #007BFF; /* 활기찬 파랑 */
-    --accent-color: #FFA500;  /* 밝은 주황 */
-    --text-color: #343A40;    /* 어두운 회색 / 검정 */
-    --background-color: #FFFFFF; /* 흰색 */
-    --light-gray-bg: #F8F9FA; /* 밝은 회색 */
+    /* Sophisticated Dark Theme */
+    --bg-main: #1A1A2E; /* main background */
+    --bg-main-rgb: 26,26,46; /* RGB for bg-main */
+    --text-main: #F0F0F0; /* main text color */
+    --accent-primary: #FFA500; /* primary accent, for CTAs, highlights */
+    --accent-primary-rgb: 255,165,0; /* RGB for accent-primary */
+    --bg-subtle: #2C2F48; /* subtle background, for cards or secondary elements */
+    --text-secondary: #B0B0C0; /* secondary text, for less prominent info */
+    --border-color: #404058; /* for borders, if needed */
+
+    /* Existing variables updated to use new theme */
+    --primary-color: var(--accent-primary); /* 활기찬 파랑 -> primary accent */
+    --accent-color: var(--accent-primary);  /* 밝은 주황 -> primary accent */
+    --text-color: var(--text-main);    /* 어두운 회색 / 검정 -> main text */
+    --background-color: var(--bg-main); /* 흰색 -> main background */
+    --light-gray-bg: var(--bg-subtle); /* 밝은 회색 -> subtle background */
+    --dropdown-hover-bg: #3B3E5C; /* Slightly lighter than bg-subtle for dropdown hover */
+
+    /* Font variables (unchanged) */
     --heading-font: 'Montserrat', sans-serif; /* 제목 폰트 */
     --body-font: 'Noto Sans KR', sans-serif; /* 본문 폰트 */
 }
@@ -95,16 +110,16 @@ html {
 
 body {
     font-family: var(--body-font);
-    color: var(--text-color);
+    color: var(--text-main);
     line-height: 1.6; /* 줄 간격 */
-    background-color: var(--background-color);
+    background-color: var(--bg-main);
     font-weight: 400; /* Noto Sans KR Regular */
 }
 
 /* 제목 스타일 */
 h1, h2, h3, h4, h5, h6 {
     font-family: var(--heading-font);
-    color: var(--primary-color);
+    color: var(--text-main);
     margin-bottom: 1rem;
     font-weight: 700; /* Montserrat Bold */
 }
@@ -119,12 +134,12 @@ p {
 
 /* 링크 스타일 */
 a {
-    color: var(--primary-color);
+    color: var(--accent-primary);
     text-decoration: none;
     transition: color 0.3s ease;
 }
 a:hover {
-    color: var(--accent-color);
+    color: var(--text-main);
 }
 
 /* 목록 스타일 */
@@ -144,7 +159,7 @@ img {
 hr {
     border: 0;
     height: 1px;
-    background-color: #eee;
+    background-color: var(--border-color); /* Updated for dark theme */
     margin: 2rem 0; /* 위아래 여백 */
 }
 
@@ -164,8 +179,8 @@ hr {
 
 /* 헤더 및 네비게이션 */
 header {
-    background-color: #fff;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
+    background-color: var(--bg-subtle);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); /* 그림자 효과 - Adjusted for dark theme */
     position: sticky; /* 상단 고정 */
     top: 0;
     z-index: 1000; /* 다른 요소 위에 표시 */
@@ -195,14 +210,14 @@ nav ul li {
     position: relative; /* 드롭다운 기준점 */
 }
 nav ul li a {
-    color: var(--text-color);
+    color: var(--text-main);
     font-weight: 500; /* Noto Sans KR Medium */
     padding: 5px 0;
     position: relative;
     transition: color 0.3s ease;
 }
 nav ul li a:hover {
-    color: var(--primary-color);
+    color: var(--accent-primary);
 }
 /* 네비게이션 호버 밑줄 효과 */
 nav ul li a::after {
@@ -212,7 +227,7 @@ nav ul li a::after {
     height: 2px;
     bottom: -2px;
     left: 0;
-    background-color: var(--accent-color);
+    background-color: var(--accent-primary);
     transition: width 0.3s ease;
 }
 nav ul li a:hover::after {
@@ -223,9 +238,9 @@ nav ul li a:hover::after {
 .dropdown-content {
     display: none; /* 기본 숨김 */
     position: absolute;
-    background-color: #f9f9f9;
+    background-color: var(--bg-subtle); /* Updated to dark theme */
     min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.4); /* Adjusted shadow for dark theme */
     z-index: 1;
     top: 100%; /* 부모 요소 아래 위치 */
     left: 0;
@@ -236,15 +251,15 @@ nav ul li a:hover::after {
     margin-left: 0; /* 마진 초기화 */
 }
 .dropdown-content a {
-    color: var(--text-color);
+    color: var(--text-main); /* Updated text color */
     padding: 10px 15px;
     display: block;
     white-space: nowrap; /* 줄바꿈 방지 */
     font-weight: 400; /* Regular */
 }
 .dropdown-content a:hover {
-    background-color: #ddd;
-    color: var(--primary-color);
+    background-color: var(--dropdown-hover-bg); /* Updated hover background */
+    color: var(--accent-primary); /* Ensure hover text color is accent */
 }
 .dropdown-content a::after {
     display: none; /* 드롭다운 내 밑줄 제거 */
@@ -285,7 +300,7 @@ nav ul li a:hover::after {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* 반투명 검정 */
+    background-color: rgba(0, 0, 0, 0.6); /* 반투명 검정 - Increased darkness */
     z-index: 1; /* 비디오 위, 콘텐츠 아래 */
 }
 
@@ -293,24 +308,24 @@ nav ul li a:hover::after {
 .hero-content {
     position: relative;
     z-index: 2; /* 오버레이 위에 표시 */
-    color: white; /* 텍스트 흰색 */
+    /* color: white;  Removed as child elements will define their colors */
 }
 .hero h1 {
-    color: white; /* 제목 흰색 */
-    font-size: 3rem;
+    color: var(--text-main); /* 제목 흰색 -> main text */
+    font-size: 3rem; /* Consider increasing if it looks diminished */
     margin-bottom: 0.5rem;
 }
 .hero p {
     font-size: 1.2rem;
     margin-bottom: 2rem;
-    color: white; /* 단락 흰색 */
+    color: var(--text-secondary); /* 단락 흰색 -> secondary text */
 }
 
 /* CTA 버튼 스타일 */
 .cta-button {
     display: inline-block;
-    background-color: var(--accent-color);
-    color: white;
+    background-color: var(--accent-primary);
+    color: var(--bg-main);
     padding: 12px 25px;
     border-radius: 25px; /* 둥근 모서리 */
     text-decoration: none;
@@ -321,8 +336,8 @@ nav ul li a:hover::after {
     font-size: 1rem;
 }
 .cta-button:hover {
-    background-color: #e69500; /* 호버 시 어두운 주황색 */
-    color: white;
+    background-color: #FFC14D; /* 호버 시 밝은 주황색 */
+    color: var(--bg-main);
     transform: translateY(-2px); /* 약간 위로 이동하는 효과 */
 }
 
@@ -334,17 +349,18 @@ nav ul li a:hover::after {
 .history-item {
     margin-bottom: 20px;
     padding: 15px;
-    border-left: 3px solid var(--primary-color); /* 타임라인 선 */
-    background-color: var(--light-gray-bg);
+    border-left: 3px solid var(--accent-primary); /* 타임라인 선 */
+    background-color: var(--bg-subtle);
     border-radius: 4px;
 }
 .history-item h3 {
      margin-top: 0;
-     color: var(--text-color); /* 제목 색상 조정 */
+     color: var(--text-main); /* 제목 색상 조정 */
 }
 .history-item p {
     margin-bottom: 0.5rem;
     font-size: 0.9rem;
+    color: var(--text-secondary); /* Explicitly set for history item paragraphs */
 }
 
 /* 스튜디오 슬라이더 스타일 */
@@ -386,10 +402,10 @@ nav ul li a:hover::after {
     transform: translateY(-50%); /* 수직 가운데 정렬 */
     width: auto;
     padding: 16px;
-    color: white;
+    color: var(--bg-main);
     font-weight: bold;
     font-size: 20px;
-    background-color: rgba(0, 0, 0, 0.5); /* 반투명 배경 */
+    background-color: var(--accent-primary); /* Updated background */
     border: none;
     border-radius: 0 3px 3px 0;
     user-select: none; /* 텍스트 선택 방지 */
@@ -401,7 +417,8 @@ nav ul li a:hover::after {
 }
 .prev-btn:hover,
 .next-btn:hover {
-    background-color: rgba(0, 0, 0, 0.8); /* 호버 시 어두운 배경 */
+    background-color: #FFC14D; /* 호버 시 밝은 주황색 */
+    color: var(--bg-main);
 }
 
 /* 프로젝트 섹션 (신규 추가) */
@@ -412,13 +429,18 @@ nav ul li a:hover::after {
     margin-top: 1.5rem; /* 제목 아래 여백 */
 }
 .project-item { /* 플레이스홀더 스타일 */
-    background-color: #fff; /* 배경색 변경 */
+    background-color: var(--bg-subtle); /* 배경색 변경 */
     padding: 15px;
-    border: 1px solid #eee;
+    border: 1px solid var(--border-color);
     border-radius: 8px;
     text-align: center;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3); /* More pronounced shadow */
 }
+/* Ensure h3 within project-item uses text-main */
+.project-item h3 {
+    color: var(--text-main);
+}
+
 
 /* 포트폴리오 섹션 */
 .filter-buttons {
@@ -426,43 +448,48 @@ nav ul li a:hover::after {
     text-align: center;
 }
 .filter-btn {
-    background-color: #eee;
-    border: none;
+    background-color: var(--bg-subtle);
+    color: var(--text-main);
+    border: 1px solid var(--border-color);
     padding: 8px 15px;
     margin: 0 5px;
     cursor: pointer;
     border-radius: 20px;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
 .filter-btn:hover,
 .filter-btn.active { /* 활성화된 버튼 스타일 */
-    background-color: var(--primary-color);
-    color: white;
+    background-color: var(--accent-primary);
+    color: var(--bg-main);
+    border-color: var(--accent-primary);
 }
 .portfolio-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* 반응형 그리드 */
     gap: 20px; /* 그리드 간격 */
 }
-.portfolio-item { /* 플레이스홀더 스타일 */
-    background-color: #eee;
+.portfolio-item { /* 플레이스홀더 스타일 - This is for items that DONT have an image */
+    background-color: var(--bg-subtle);
     min-height: 200px;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #aaa;
+    color: var(--text-secondary);
     border-radius: 8px;
     text-align: center;
     padding: 10px;
+    border: 1px dashed var(--border-color); /* Dashed border to indicate placeholder */
 }
 
 /* 서비스 섹션 */
 #services ul {
     list-style: disc; /* 기본 불릿 */
     padding-left: 20px; /* 들여쓰기 */
+    /* List marker color will be inherited from li's color */
 }
 #services li {
     margin-bottom: 10px; /* 항목 간 여백 */
+    color: var(--text-main); /* Ensure list item text (and default marker) is visible */
 }
 
 /* 연락처 섹션 */
@@ -473,45 +500,104 @@ nav ul li a:hover::after {
 }
 .contact-info p {
     margin-bottom: 0.8rem;
+    color: var(--text-secondary);
+}
+.contact-info p strong {
+    color: var(--text-main);
 }
 .map-placeholder { /* 지도 플레이스홀더 */
-    background-color: #eee;
+    background-color: var(--bg-subtle);
     min-height: 250px;
     margin-top: 1.5rem;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #aaa;
+    color: var(--text-secondary);
     border-radius: 4px;
+    border: 1px solid var(--border-color);
 }
 
 /* 문의 양식 스타일 */
 .contact-form label {
     display: block;
-    margin-bottom: 5px;
+    margin-bottom: 8px; /* Updated margin */
     font-weight: 500;
+    color: var(--text-main);
 }
 .contact-form input[type="text"],
 .contact-form input[type="email"],
 .contact-form textarea {
     width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
+    padding: 12px 15px; /* Updated padding */
+    margin-bottom: 20px; /* Updated margin */
+    border: 1px solid var(--border-color);
     border-radius: 4px;
     font-family: var(--body-font); /* 폰트 상속 */
+    background-color: var(--bg-main);
+    color: var(--text-main);
+    line-height: 1.5; /* Added line-height */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
+.contact-form input[type="text"]:focus,
+.contact-form input[type="email"]:focus,
+.contact-form textarea:focus {
+    border-color: var(--accent-primary);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(var(--accent-primary-rgb), 0.4); /* Enhanced box-shadow */
+}
+/* Placeholder styles */
+.contact-form input[type="text"]::placeholder,
+.contact-form input[type="email"]::placeholder,
+.contact-form textarea::placeholder {
+    color: var(--text-secondary);
+    opacity: 0.7;
+}
+.contact-form input[type="text"]::-webkit-input-placeholder,
+.contact-form input[type="email"]::-webkit-input-placeholder,
+.contact-form textarea::-webkit-input-placeholder {
+    color: var(--text-secondary);
+    opacity: 0.7;
+}
+.contact-form input[type="text"]::-moz-placeholder, /* Firefox 19+ */
+.contact-form input[type="email"]::-moz-placeholder,
+.contact-form textarea::-moz-placeholder {
+    color: var(--text-secondary);
+    opacity: 0.7;
+}
+.contact-form input[type="text"]:-ms-input-placeholder, /* Internet Explorer 10-11 */
+.contact-form input[type="email"]:-ms-input-placeholder,
+.contact-form textarea:-ms-input-placeholder {
+    color: var(--text-secondary);
+    opacity: 0.7;
+}
+.contact-form input[type="text"]::-ms-input-placeholder, /* Microsoft Edge */
+.contact-form input[type="email"]::-ms-input-placeholder,
+.contact-form textarea::-ms-input-placeholder {
+    color: var(--text-secondary);
+    opacity: 0.7;
+}
+/*
+.contact-form input[type="text"]:disabled,
+.contact-form input[type="email"]:disabled,
+.contact-form textarea:disabled {
+    background-color: var(--bg-subtle);
+    color: var(--text-secondary);
+    opacity: 0.6;
+    cursor: not-allowed;
+    border-color: var(--border-color);
+}
+*/
 .contact-form textarea {
     resize: vertical; /* 수직 크기 조절 허용 */
 }
 .contact-form button[type="submit"] {
-    /* CTA 버튼 스타일 사용 */
+    /* CTA 버튼 스타일 사용 - Verification: Should inherit from global .cta-button */
 }
 
 /* 푸터 스타일 */
 footer {
-    background-color: var(--text-color); /* 어두운 배경 */
-    color: #ccc; /* 밝은 텍스트 색상 */
+    background-color: var(--bg-subtle); /* 어두운 배경 -> subtle background */
+    color: var(--text-secondary); /* 밝은 텍스트 색상 -> secondary text */
     text-align: center;
     padding: 20px 0;
     margin-top: 40px; /* 위 여백 */
@@ -519,28 +605,35 @@ footer {
 footer p {
     margin-bottom: 0;
     font-size: 0.9rem;
+    color: var(--text-secondary); /* Ensure p specifically uses secondary text color */
 }
 
 /* 기본 반응형 조정 */
 @media (max-width: 768px) {
     h1 { font-size: 2.2rem; }
     h2 { font-size: 1.8rem; }
-    .hero { padding: 60px 0; min-height: 50vh; } /* Hero 섹션 높이/패딩 조정 */
+    .section-padding { padding: 40px 0; } /* Reduced section padding for smaller screens */
+    .hero { padding: 40px 0; min-height: 50vh; } /* Hero 섹션 높이/패딩 조정, consistent with section-padding */
     .hero h1 { font-size: 2.5rem; }
     .hero p { font-size: 1rem; }
-    .contact-grid { grid-template-columns: 1fr; gap: 30px; } /* 연락처 섹션 1열로 변경 */
+    .contact-grid { grid-template-columns: 1fr; gap: 20px; } /* 연락처 섹션 1열로 변경, reduced gap */
     .map-placeholder { min-height: 200px; }
-    .prev-btn, .next-btn { font-size: 16px; padding: 12px; } /* 슬라이더 버튼 크기 조정 */
-    .project-grid, .portfolio-grid { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); } /* 그리드 최소 너비 조정 */
+    .prev-btn, .next-btn { font-size: 16px; padding: 10px; } /* 슬라이더 버튼 크기/패딩 조정 */
+    .project-grid, .portfolio-grid { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 15px; } /* 그리드 최소 너비 및 간격 조정 */
 }
 
 @media (max-width: 480px) {
-    .portfolio-grid, .project-grid { grid-template-columns: 1fr; } /* 포트폴리오/프로젝트 1열로 변경 */
-    nav ul li { margin: 5px; } /* 네비게이션 간격 조정 */
     .hero h1 { font-size: 2rem; } /* Hero 제목 크기 조정 */
-    .prev-btn, .next-btn { font-size: 14px; padding: 10px; } /* 슬라이더 버튼 크기 추가 조정 */
+    .hero p { font-size: 0.9rem; } /* Slightly smaller hero paragraph for very small screens */
+    .project-grid, .portfolio-grid { grid-template-columns: 1fr; gap: 15px; } /* 포트폴리오/프로젝트 1열로 변경, consistent gap */
+    nav ul li { margin: 10px 0; } /* 네비게이션 간격 조정 for stacked mobile menu (text is centered by parent) */
+    .prev-btn, .next-btn { font-size: 14px; padding: 8px; } /* 슬라이더 버튼 크기 추가 조정 */
     nav ul { margin-left: 0; } /* 네비게이션 왼쪽 마진 제거 */
-    nav ul li { margin-left: 10px; margin-right: 10px; } /* 네비게이션 항목 좌우 여백 */
+    /* nav ul li { margin-left: 10px; margin-right: 10px; } /* This line is redundant/conflicting if text is centered */
+    .contact-form input[type="text"],
+    .contact-form input[type="email"],
+    .contact-form textarea { padding: 10px; } /* Slightly reduce padding on very small screens for form inputs */
+    .cta-button, .lang-button { padding: 10px 20px; font-size: 0.9rem; } /* Adjust CTA/lang button padding for small screens */
 }
 
 /* Bandi Gallery 섹션 */
@@ -554,7 +647,7 @@ footer p {
 .bandi-gallery img {
     width: 200px;
     height: auto;
-    border: 1px solid #ccc;
+    border: 1px solid var(--border-color);
     border-radius: 5px;
 }
 
@@ -569,7 +662,7 @@ footer p {
 .sensitive-cat-gallery img {
     width: 200px;
     height: auto;
-    border: 1px solid #ccc;
+    border: 1px solid var(--border-color);
     border-radius: 5px;
 }
 
@@ -581,7 +674,7 @@ footer p {
 .sensitive-cat-video video {
     max-width: 100%;
     height: auto;
-    border: 1px solid #ccc;
+    border: 1px solid var(--border-color);
     border-radius: 5px;
 }
 
@@ -599,7 +692,7 @@ footer p {
 .yummy-gallery img {
     width: 200px;
     height: auto;
-    border: 1px solid #ccc;
+    border: 1px solid var(--border-color);
     border-radius: 5px;
 }
 
@@ -614,7 +707,7 @@ footer p {
 .yummy-video video {
     max-width: 100%;
     height: auto;
-    border: 1px solid #ccc;
+    border: 1px solid var(--border-color);
     border-radius: 5px;
 }
 
@@ -628,11 +721,64 @@ footer p {
 .portfolio-image {
     width: 100%;
     height: auto;
-    border: 1px solid #ccc;
+    border: 3px solid var(--border-color); /* More pronounced border */
     border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 3px 6px rgba(0,0,0,0.35); /* Consistent shadow */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.portfolio-image:hover {
+    transform: scale(1.03);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
 }
 
+/* --- Ideal Portfolio Card Structure (Requires HTML/JS change) ---
+.portfolio-card {
+    background-color: var(--bg-subtle);
+    padding: 15px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex; /* If needed for image centering or text content */
+    flex-direction: column; /* If text content is added below image */
+    overflow: hidden; /* To contain image if it has different radius */
+}
+
+.portfolio-card img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 4px; /* Inner radius for the image */
+}
+
+.portfolio-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.5);
+}
+
+/* Example for text overlay on hover (would need an inner div for text)
+.portfolio-card .overlay-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(var(--bg-main-rgb, 26,26,46), 0.85); /* Assuming --bg-main-rgb is defined */
+    color: var(--text-main);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    border-radius: 8px; /* Match card radius */
+}
+.portfolio-card:hover .overlay-content {
+    opacity: 1;
+}
+.portfolio-card .overlay-content h4 { margin-bottom: 5px; color: var(--accent-primary); }
+.portfolio-card .overlay-content p { font-size: 0.9em; margin-bottom: 0; }
+*/
 /* ...existing code... */
 
 /* Hamburger styles */
@@ -651,7 +797,7 @@ footer p {
     display: block;
     height: 4px;
     margin: 5px 0;
-    background: #333;
+    background: var(--text-main);
     border-radius: 2px;
     transition: 0.3s;
 }
@@ -664,8 +810,8 @@ footer p {
         right: -100vw;
         width: 70vw;
         height: 100vh;
-        background: #fff;
-        box-shadow: -2px 0 8px rgba(0,0,0,0.1);
+        background: var(--bg-subtle); /* Updated background for mobile nav */
+        box-shadow: -2px 0 8px rgba(0,0,0,0.3); /* Adjusted shadow for dark theme */
         transition: right 0.3s;
         z-index: 1000;
         padding-top: 60px;
@@ -685,8 +831,11 @@ footer p {
         display: flex;
     }
     .lang-button {
-        width: 100%;
-        margin: 20px 0 0 0;
+        width: auto; /* Allow button to size to content, or set specific width if needed */
+        padding: 8px 15px; /* Ensure padding is consistent */
+        margin: 15px auto; /* Centering the button if it's block */
+        display: block; /* Make it block to center with auto margins */
+        text-align: center;
     }
     .lang-menu-item {
         display: block;
@@ -697,7 +846,7 @@ footer p {
 }
 
 /* Hide hamburger on desktop */
-@media (min-width: 769px) {
+@media (min-width: 769px) { /* This media query seems to be for desktop nav layout */
     .hamburger {
         display: none;
     }
@@ -736,8 +885,8 @@ header .container {
     align-items: center;
     width: 44px;
     height: 44px;
-    background: #f5f5f5;
-    border: 1px solid #ddd;
+    background: transparent; /* Hamburger button itself is transparent */
+    border: 1px solid var(--border-color); /* Optional: border for definition */
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.04);
     cursor: pointer;
@@ -749,7 +898,7 @@ header .container {
     width: 24px;
     height: 3px;
     margin: 4px 0;
-    background: #333;
+    background: var(--text-main); /* Hamburger icon lines */
     border-radius: 2px;
     transition: 0.3s;
 }
@@ -762,8 +911,8 @@ header .container {
         right: -100vw;
         width: 70vw;
         height: 100vh;
-        background: #fff;
-        box-shadow: -2px 0 8px rgba(0,0,0,0.1);
+        background: var(--bg-subtle); /* Updated background for mobile nav */
+        box-shadow: -2px 0 8px rgba(0,0,0,0.3); /* Adjusted shadow for dark theme */
         transition: right 0.3s;
         z-index: 1000;
         padding-top: 60px;
@@ -867,8 +1016,8 @@ header .container {
     align-items: center;
     width: 44px;
     height: 44px;
-    background: #f5f5f5;
-    border: 1px solid #ddd;
+    background: transparent; /* Hamburger button itself is transparent */
+    border: 1px solid var(--border-color); /* Optional: border for definition */
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.04);
     cursor: pointer;
@@ -885,9 +1034,9 @@ header .container {
         height: 56px;
         padding: 0 12px;
     }
-    nav {
-        margin-left: auto;
-    }
+    /* nav {
+        margin-left: auto; /* This line is redundant and has no effect due to subsequent nav rules for mobile */
+    /* } */
     .hamburger {
         display: flex;
     }
@@ -897,8 +1046,8 @@ header .container {
         right: -100vw;
         width: 70vw;
         height: 100vh;
-        background: #fff;
-        box-shadow: -2px 0 8px rgba(0,0,0,0.1);
+        background: var(--bg-subtle); /* Updated background for mobile nav */
+        box-shadow: -2px 0 8px rgba(0,0,0,0.3); /* Adjusted shadow for dark theme */
         transition: right 0.3s;
         z-index: 1000;
         padding-top: 60px;
@@ -1006,8 +1155,8 @@ header .container {
     align-items: center;
     width: 44px;
     height: 44px;
-    background: #f5f5f5;
-    border: 1px solid #ddd;
+    background: transparent; /* Hamburger button itself is transparent */
+    border: 1px solid var(--border-color); /* Optional: border for definition */
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.04);
     cursor: pointer;
@@ -1029,10 +1178,12 @@ header .container {
         grid-column: 2;
         justify-content: center;
     }
-    .hamburger {
+    .hamburger { /* Ensuring hamburger has correct display and background */
         display: flex;
         grid-column: 3;
         justify-self: end;
+        background: transparent; /* Explicitly transparent */
+        border: 1px solid var(--border-color); /* Consistent border */
     }
     nav {
         margin-left: 0;
@@ -1041,8 +1192,8 @@ header .container {
         right: -100vw;
         width: 70vw;
         height: 100vh;
-        background: #fff;
-        box-shadow: -2px 0 8px rgba(0,0,0,0.1);
+        background: var(--bg-subtle); /* Updated background for mobile nav */
+        box-shadow: -2px 0 8px rgba(0,0,0,0.3); /* Adjusted shadow for dark theme */
         transition: right 0.3s;
         z-index: 1000;
         padding-top: 60px;
@@ -1153,3 +1304,141 @@ header .container {
     }
 }
 /* ...existing code... */
+
+/* --- Conceptual Portfolio Lightbox Styles --- */
+
+.lightbox-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(var(--bg-main-rgb, 26,26,46), 0.9); /* Dark overlay, using the RGB variable */
+    display: none; /* Hidden by default, JS would show it */
+    justify-content: center;
+    align-items: center;
+    z-index: 10000; /* Ensure it's on top */
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.lightbox-container {
+    position: relative;
+    background-color: var(--bg-subtle);
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.7);
+    max-width: 90vw; /* Max width */
+    max-height: 90vh; /* Max height */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.lightbox-container img {
+    max-width: 100%;
+    max-height: calc(80vh - 80px); /* Adjust based on padding and caption height */
+    display: block;
+    border-radius: 4px;
+    margin-bottom: 15px; /* Space for caption */
+}
+
+.lightbox-close {
+    position: absolute;
+    top: -15px; /* Position outside the container slightly */
+    right: -15px;
+    background-color: var(--accent-primary);
+    color: var(--bg-main);
+    border: none;
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    font-size: 24px;
+    line-height: 35px; /* Center the 'x' */
+    text-align: center;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+    transition: background-color 0.3s ease;
+}
+.lightbox-close:hover {
+    background-color: #FFC14D; /* Lighter orange */
+}
+
+.lightbox-prev,
+.lightbox-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(var(--accent-primary-rgb, 255,165,0), 0.8);
+    color: var(--bg-main);
+    border: none;
+    border-radius: 4px;
+    padding: 10px 15px;
+    font-size: 28px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    z-index: 10010; /* Above image container but below close if overlapping */
+}
+.lightbox-prev:hover,
+.lightbox-next:hover {
+    background-color: var(--accent-primary);
+}
+
+.lightbox-prev {
+    left: -20px; /* Position outside container */
+}
+
+.lightbox-next {
+    right: -20px; /* Position outside container */
+}
+
+.lightbox-caption {
+    color: var(--text-main);
+    text-align: center;
+    font-size: 0.9em;
+    max-width: 100%;
+}
+
+/* Responsive adjustments for smaller screens if lightbox buttons are too far out */
+@media (max-width: 768px) {
+    .lightbox-prev {
+        left: 5px;
+    }
+    .lightbox-next {
+        right: 5px;
+    }
+    .lightbox-container {
+        padding: 15px;
+    }
+    .lightbox-container img {
+        max-height: calc(80vh - 60px);
+    }
+    .lightbox-close {
+        top: -10px;
+        right: -10px;
+        width: 30px;
+        height: 30px;
+        font-size: 20px;
+        line-height: 30px;
+    }
+}
+
+/* --- Main Section Fade-in Animation --- */
+#about,
+#projects,
+#portfolio,
+#services,
+#contact {
+    animation: fadeInSection 0.75s ease-out forwards;
+}
+
+@keyframes fadeInSection {
+    from {
+        opacity: 0;
+        transform: translateY(20px); /* Optional: slight upward movement */
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
