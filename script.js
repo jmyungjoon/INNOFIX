@@ -60,8 +60,8 @@
         langToggleButton.addEventListener('click', toggleLanguage);
     }
 
-    // 페이지 로드 시 초기 언어 설정 (HTML 태그의 lang 속성 기준, 기본값 'ko')
-    const initialLang = htmlTag.getAttribute('lang') || 'ko';
+    // 페이지 로드 시 초기 언어 설정 (HTML 태그의 lang 속성 기준, 기본값 'en')
+    const initialLang = htmlTag.getAttribute('lang') || 'en';
     setLanguage(initialLang);
 
 
