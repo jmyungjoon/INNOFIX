@@ -19,7 +19,7 @@
 
         // 버튼 텍스트를 현재 언어의 *반대* 언어로 업데이트
         if (langToggleButton) { // 버튼이 존재하는지 확인
-             langToggleButton.textContent = lang === 'ko' ? 'English' : '한국어';
+             langToggleButton.textContent = lang === 'ko' ? 'English' : 'Korean';
         }
 
         // 페이지 제목 업데이트 (선택 사항)
